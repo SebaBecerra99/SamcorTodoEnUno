@@ -67,6 +67,19 @@ function cargarArchivoDesdeCSV(medidaBuscada) {
         })
         .catch((error) => {
             console.error("Error al cargar los datos desde GitHub:", error);
+
+            const resultadosDiv = document.getElementById('resultados');
+            resultadosDiv.innerHTML = '';
+
+            const mensaje = document.createElement('p');
+            mensaje.classList.add('alert', 'alert-warning');
+            mensaje.textContent =
+                'No fue posible cargar la información de neumáticos. Intenta nuevamente más tarde.';
+
+            resultadosDiv.appendChild(mensaje);
+
+            document.getElementById('copyButton').style.display = 'none';
+            document.getElementById('copySelectedButton').style.display = 'none';
         });
 }
 
